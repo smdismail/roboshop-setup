@@ -5,4 +5,4 @@ catalogue:
 	@bash components/catalogue.sh
 
 frontend:
-	@bash components/user.sh
+	@bash components/frontend.sh

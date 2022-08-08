@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+#Running Roboshop Frontend with Sudo permission
 yum install nginx -y
 systemctl enable nginx
 curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip"

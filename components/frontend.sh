@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-#echo frontend
+
 
 yum install nginx -y
 systemctl enable nginx

@@ -6,7 +6,7 @@ source components/common.sh
 checkRootUser
 
 ECHO "installing nginx"
-yum install nginx -y >>${LOG_FILE}
+yumm install nginx -y >>${LOG_FILE}
 statusCheck $?
 
 ECHO "downloading frontend code"

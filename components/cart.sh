@@ -1,12 +1,6 @@
 #!/usr/bin/env bash
 #Running Roboshop Frontend with Sudo permission
 
-USER_ID=$(id -u)
+source components/common.sh
 
-if [ "$USER_ID" -ne 0 ]
-then
-  echo Your suppose to be run this as a Root or Sudo user
-else
-  echo OK
-
-fi
+checkRootUser

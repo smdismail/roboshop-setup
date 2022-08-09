@@ -11,9 +11,9 @@ checkRootUser(){
 statusCheck(){
   if [ $1 -eq 0 ]
   then
-    echo -e "\e[32mSuccess\e[m0"
+    echo -e "\e[32mSuccess\e[0m"
     else
-      echo -e "\e[31mFail\[m0"
+      echo -e "\e[31mFail\[0m"
       exit 1
       fi
 }

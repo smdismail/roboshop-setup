@@ -8,3 +8,12 @@ checkRootUser(){
   fi
 }
 
+statusCheck(){
+  if [ $1 -eq 0 ]
+  then
+    echo -e Success
+    else
+      echo -e Fail
+      exit 1
+      fi
+}

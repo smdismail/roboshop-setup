@@ -1,12 +1,9 @@
 #!/usr/bin/env bash
 #Running Roboshop Frontend with Sudo permission
 
-USER_ID=$(id -u)
+source components/common.sh
 
-if [ "$USER_ID" -ne 0 ]
-then
-  echo Your suppose to be run this as a Root or Sudo user
-else
+checkRootUser
 
 yum install nginx -y
 systemctl enable nginx
@@ -18,4 +15,3 @@ mv frontend-main/static/* .
 mv frontend-main/localhost.conf /etc/nginx/default.d/roboshop.conf
 systemctl restart nginx
 
-fi

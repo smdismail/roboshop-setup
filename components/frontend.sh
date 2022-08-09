@@ -5,13 +5,13 @@ source components/common.sh
 
 checkRootUser
 
-yum install nginx -y
-systemctl enable nginx
-curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip"
+yum install nginx -y >/tmp/roboshop.log
+systemctl enable nginx >/tmp/roboshop.log
+curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip" >/tmp/roboshop.log
 cd /usr/share/nginx/html
-rm -rf *
-unzip /tmp/frontend.zip
-mv frontend-main/static/* .
-mv frontend-main/localhost.conf /etc/nginx/default.d/roboshop.conf
-systemctl restart nginx
+rm -rf * >/tmp/roboshop.log
+unzip /tmp/frontend.zip >/tmp/roboshop.log
+mv frontend-main/static/* . >/tmp/roboshop.log
+mv frontend-main/localhost.conf /etc/nginx/default.d/roboshop.conf >/tmp/roboshop.log
+systemctl restart nginx >/tmp/roboshop.log
 

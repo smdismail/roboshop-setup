@@ -5,7 +5,6 @@ checkRootUser(){
   then
     echo Your suppose to be run this as a Root or Sudo user
     exit
-
   fi
 }
 

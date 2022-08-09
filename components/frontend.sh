@@ -5,34 +5,34 @@ source components/common.sh
 
 checkRootUser
 
-echo "installing nginx"
-yum install nginx -y >/tmp/roboshop.log
+ECHO "installing nginx"
+yum install nginx -y >>${LOG_FILE}
 statusCheck $?
 
-echo "downloading frontend code"
-curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip" >/tmp/roboshop.log
+ECHO "downloading frontend code"
+curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip" >>${LOG_FILE}
 statusCheck $?
 cd /usr/share/nginx/html
 
-echo "removing old files"
-rm -rf * >/tmp/roboshop.log
+ECHO "removing old files"
+rm -rf * >>${LOG_FILE}
 statusCheck $?
 
-echo "extracting zip content"
-unzip /tmp/frontend.zip >/tmp/roboshop.log
+ECHO "extracting zip content"
+unzip /tmp/frontend.zip >>${LOG_FILE}
 statusCheck $?
 
-echo "copying extracted content"
-mv frontend-main/* . >/tmp/roboshop.log
-mv static/* . >/tmp/roboshop.log
-rm -rf frontend-main README.md >/tmp/roboshop.log
+ECHO "copying extracted content"
+mv frontend-main/* . >>${LOG_FILE}
+mv static/* . >>${LOG_FILE}
+rm -rf frontend-main README.md >>${LOG_FILE}
 statusCheck $?
 
-echo "copying robshop nginx config"
-mv localhost.conf /etc/nginx/default.d/roboshop.conf >/tmp/roboshop.log
+ECHO "copying robshop nginx config"
+mv localhost.conf /etc/nginx/default.d/roboshop.conf >>${LOG_FILE}
 statusCheck $?
 
-echo "Start nginx service"
-systemctl enable nginx >/tmp/roboshop.log
-systemctl restart nginx >/tmp/roboshop.log
+ECHO "Start nginx service"
+systemctl enable nginx >>${LOG_FILE}
+systemctl restart nginx >>${LOG_FILE}
 statusCheck $?

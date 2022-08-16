@@ -2,7 +2,7 @@
 #Running Roboshop Frontend with Sudo permission
 
 source components/common.sh
-
+#sample running frontend
 checkRootUser
 
 ECHO "installing nginx"

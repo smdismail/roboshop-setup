@@ -31,7 +31,7 @@ statusCheck $?
 
 #update /etc/mongod.conf
 ECHO "Configure Listen address in Mongodb configuration"
-sed -i -e "$/127.0.0.1/0.0.0.0/" /etc/mongod.conf
+sed -i -e '$/127.0.0.1/0.0.0.0/' /etc/mongod.conf
 statusCheck $?
 
 

@@ -37,29 +37,35 @@ if [ $? -ne 0 ];
 then
   ECHO "Application User add"
   useradd roboshop >>${LOG_FILE}
+  statusCheck $?
   fi
-statusCheck $?
+
 
 ECHO "Download application content"
 curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/catalogue/archive/main.zip" >>${LOG_FILE}
 statusCheck $?
 
 ECHO "Extract application archive"
-cd /home/roboshop && rm -rf catalogue >>${LOG_FILE} && unzip /tmp/catalogue.zip >>${LOG_FILE} && mv catalogue-main catalogue
+cd /home/roboshop
+rm -rf catalogue >>${LOG_FILE}
+unzip /tmp/catalogue.zip >>${LOG_FILE}
+mv catalogue-main catalogue
 statusCheck $?
 
 ECHO "Install NodeJs module"
 cd /home/roboshop/catalogue && npm install >>${LOG_FILE} && chown roboshop:roboshop /home/roboshop/catalogue -R
 statusCheck $?
 
-ECHO "Update SystemD configuration file"
-sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' /home/roboshop/catalogue/systemd.service
-statusCheck $?
-
-ECHO "Update SystemD Service"
-mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service
-systemctl daemon-reload >>${LOG_FILE} && systemctl enable catalogue >>${LOG_FILE} && systemctl restart catalogue >>${LOG_FILE}
-statusCheck $?
+#ECHO "Update SystemD configuration file"
+#sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' /home/roboshop/catalogue/systemd.service
+#statusCheck $?
+#
+#ECHO "Update SystemD Service"
+#mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service
+#systemctl daemon-reload >>${LOG_FILE}
+#systemctl enable catalogue >>${LOG_FILE}
+#systemctl restart catalogue >>${LOG_FILE}
+#statusCheck $?
 
 
 

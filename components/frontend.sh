@@ -39,6 +39,10 @@ statusCheck $?
 #  statusCheck $?
 #done
 
+ECHO "Update Nginx configuration"
+sed -i -e '/catalogue/ s/localhost/catalogue.roboshop.internal/' /etc/nginx/default.d/roboshop.conf
+statusCheck $?
+
 ECHO "Start Nginx Service"
 systemctl enable nginx &>>${LOG_FILE} && systemctl restart nginx &>>${LOG_FILE}
 statusCheck $?

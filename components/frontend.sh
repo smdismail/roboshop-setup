@@ -40,3 +40,4 @@ done
 ECHO "Start nginx service"
 systemctl enable nginx >>${LOG_FILE} && systemctl restart nginx >>${LOG_FILE}
 statusCheck $?
+#echo test print
